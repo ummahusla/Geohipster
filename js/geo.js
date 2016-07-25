@@ -12,7 +12,12 @@ function showMessage(message) {
 
 function getLocation() {
     if(supportsGeolocation()) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 3000,
+            maximumAge: 20000
+        };
+        navigator.geolocation.getCurrentPosition(showPosition, showError, options);
     } else {
         showMessage("Geolocation is not supported by this browser.");
     }
