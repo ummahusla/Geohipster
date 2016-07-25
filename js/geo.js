@@ -25,16 +25,16 @@ function showPosition(position) {
 
 function showError(error) {
     switch(error.code) {
-        case error.PERMISSION_DENIED;
+        case error.PERMISSION_DENIED:
             showMessage("Hipster user denied Geolocation access requests!!1");
             break;
-        case error.POSITION_UNAVAILABLE;
+        case error.POSITION_UNAVAILABLE:
             showMessage("Location information unavailable.");
             break;
-        case error.TIMEOUIT;
+        case error.TIMEOUIT:
             showMessage("Get hipster location request timed out!!1");
             break;
-        case error.UNKNOWN_ERROR;
+        case error.UNKNOWN_ERROR:
             showMessage("GRATZ HIPSTER, YOU BROKE IT.");
             break;
     }
