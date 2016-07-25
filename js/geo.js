@@ -1,5 +1,8 @@
+var watchId = 0;
+
 $(document).ready(function(){
-    getLocation();
+    $('#startMonitoring').on('click', getLocation);
+    $('#stopMonitoring').on('click', endWatch);
 });
 
 function supportsGeolocation() {
@@ -17,9 +20,17 @@ function getLocation() {
             timeout: 3000,
             maximumAge: 20000
         };
-        navigator.geolocation.getCurrentPosition(showPosition, showError, options);
+        watchId = navigator.geolocation.watchPosition(showPosition, showError, options);
     } else {
         showMessage("Geolocation is not supported by this browser.");
+    }
+}
+
+function endWatch() {
+    if(watchId != 0) {
+        navigator.geolocation.clearWatch(watchId);
+        watchId = 0;
+        showMessage("Monitoring ended.");
     }
 }
 
